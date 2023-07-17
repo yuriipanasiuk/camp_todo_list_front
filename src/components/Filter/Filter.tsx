@@ -1,9 +1,9 @@
-import { StyledLink } from '../FilterButton/FilterButton.styled';
+import { StyledLink } from './Filter.styled';
 
 const navItems = [
-  { href: 'all', text: 'All Todos' },
-  { href: 'active', text: 'Active Todos' },
-  { href: 'completed', text: 'Completed Todos' },
+  { href: 'all', text: 'All' },
+  { href: 'active', text: 'Active' },
+  { href: 'completed', text: 'Completed' },
 ];
 
 const Filter = () => {

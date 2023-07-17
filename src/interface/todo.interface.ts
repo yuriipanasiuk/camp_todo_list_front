@@ -20,3 +20,8 @@ export interface ITodoStore {
 export interface IChildren {
   children: ReactNode;
 }
+
+export interface IButton {
+  children: ReactNode;
+  type: 'submit' | 'reset' | 'button' | undefined;
+}

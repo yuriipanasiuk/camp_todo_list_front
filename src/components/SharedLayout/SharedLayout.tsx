@@ -1,14 +1,18 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { Layout } from './SharedLayout.styled';
 import Filter from '../Filter';
+import SearchField from '../SearchField/SearchField';
+import { Layout, Wraper } from './SharedLayout.styled';
 
 const SharedLayout = () => {
   return (
     <Layout>
       <p>it is future header</p>
-      <Filter />
+      <Wraper>
+        <Filter />
+        <SearchField />
+      </Wraper>
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
