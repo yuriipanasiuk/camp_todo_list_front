@@ -5,22 +5,17 @@ export const StyledLink = styled(NavLink)`
   display: inline-block;
   width: 100px;
   text-align: center;
-  border: 1px solid blue;
+  border: 1px solid #1976d2;
   border-radius: 5px;
   text-decoration: none;
-  color: black;
+  color: #1976d2;
   font-size: 18px;
 
   &.active {
-    color: yellow;
-    background-color: blue;
+    color: white;
+    background-color: #1976d2;
   }
 
-  :not(.active) {
-    :hover {
-      color: black;
-    }
-  }
   :not(:last-child) {
     margin-right: 8px;
   }

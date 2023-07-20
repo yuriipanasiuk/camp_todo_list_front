@@ -1,22 +1,21 @@
 import styled from '@emotion/styled';
-import { NavLink } from 'react-router-dom';
 
-export const StyledLink = styled(NavLink)`
-  text-decoration: none;
-  color: orange;
-  font-size: 24px;
+export const StyledButton = styled.button`
+  width: 100px;
+  height: 29px;
+  border: 1px solid #1976d2;
+  background-color: transparent;
+  color: #1976d2;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
 
-  &.active {
-    color: orange;
-    text-decoration: underline;
+  :hover {
+    background-color: #1976d2;
+    color: white;
   }
 
-  :not(.active) {
-    :hover {
-      color: black;
-    }
-  }
   :not(:last-child) {
-    margin-right: 12px;
+    margin-right: 8px;
   }
 `;

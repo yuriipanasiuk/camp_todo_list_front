@@ -1,5 +1,7 @@
-import { Field, Form, Formik } from 'formik';
+import { Formik } from 'formik';
+
 import { TypeSearch } from '../../type/todo.type';
+import { Input, SearchIcon, Form } from './SearchField.styled';
 
 const SearchField = () => {
   const handleSubmit: TypeSearch = (data, { resetForm }) => {
@@ -11,7 +13,8 @@ const SearchField = () => {
   return (
     <Formik initialValues={{ search: '' }} onSubmit={handleSubmit}>
       <Form>
-        <Field type="text" name="search" />
+        <SearchIcon size={24} />
+        <Input type="text" name="search" />
       </Form>
     </Formik>
   );

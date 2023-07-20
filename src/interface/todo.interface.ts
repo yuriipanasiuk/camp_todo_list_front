@@ -23,5 +23,11 @@ export interface IChildren {
 
 export interface IButton {
   children: ReactNode;
-  type: 'submit' | 'reset' | 'button' | undefined;
+  type?: 'submit' | 'reset' | 'button' | undefined;
+  onClick?: () => void;
+}
+
+export interface ILoginUser {
+  email: string;
+  password: string;
 }

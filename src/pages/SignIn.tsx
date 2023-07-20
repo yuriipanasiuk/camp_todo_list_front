@@ -1,5 +1,12 @@
+import FormWraper from '../components/FormWraper/FormWraper';
+import { LoginForm } from '../components/LoginForm/LoginForm';
+
 const SignIn = () => {
-  return <div>SignIn</div>;
+  return (
+    <FormWraper>
+      <LoginForm />
+    </FormWraper>
+  );
 };
 
 export default SignIn;
