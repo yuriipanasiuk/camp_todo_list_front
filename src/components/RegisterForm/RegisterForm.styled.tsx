@@ -24,7 +24,7 @@ export const Wraper = styled('div')`
   }
 `;
 
-export const LoginTitle = styled('p')`
+export const RegisterTitle = styled('p')`
   margin-bottom: 40px;
   font-weight: 700;
   font-size: 18px;
@@ -110,7 +110,7 @@ export const ErrorMessage = styled(ErrorFormicError)`
 
   @media screen and (min-width: 425px) {
     margin-left: 30px;
-    top: 47px;
+    top: 41px;
     left: -14px;
   }
 `;
@@ -123,6 +123,9 @@ export const HideIcon = styled(FaEyeSlash)``;
 
 export const InputPasswordWraper = styled('div')`
   position: relative;
+  :not(:last-child) {
+    margin-bottom: 14px;
+  }
 `;
 
 export const IconWraper = styled('div')`
@@ -135,7 +138,7 @@ export const IconWraper = styled('div')`
   }
 `;
 
-export const EmailWraper = styled('div')`
+export const InputWraper = styled('div')`
   position: relative;
   margin-bottom: 14px;
 `;

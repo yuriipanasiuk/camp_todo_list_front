@@ -3,6 +3,8 @@ import { Formik, FormikHelpers } from 'formik';
 import { useNavigate } from 'react-router-dom';
 
 import { ILoginUser } from '../../interface/todo.interface';
+import Button from '../Button';
+import { loginValidation } from '../../utils/loginValidation';
 import {
   Wraper,
   LoginTitle,
@@ -19,15 +21,14 @@ import {
   LinkText,
   NavLink,
 } from './LoginForm.styled';
-import Button from '../Button/Button';
 
 export const LoginForm = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [inputType, setInputType] = useState(true);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [inputType, setInputType] = useState<boolean>(true);
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (values: ILoginUser, { resetForm }: FormikHelpers<ILoginUser>) => {
+  const handleSubmit = (values: ILoginUser, { resetForm }: FormikHelpers<ILoginUser>) => {
     if (!values) {
       return;
     }
@@ -47,7 +48,7 @@ export const LoginForm = () => {
       <Formik
         initialValues={{ email: '', password: '' }}
         onSubmit={handleSubmit}
-        // validationSchema={loginValidation}
+        validationSchema={loginValidation}
       >
         <Form>
           <EmailWraper>
@@ -68,7 +69,7 @@ export const LoginForm = () => {
           </InputPasswordWraper>
 
           <ButtonWraper>
-            <Button children="Login" />
+            <Button children="Login" type="submit" />
           </ButtonWraper>
           <LinkWraper>
             <LinkText>Dont have an account? </LinkText>
