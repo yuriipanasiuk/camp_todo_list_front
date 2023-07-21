@@ -1,19 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ITodoStore } from '../interface/todo.interface';
+import { fetchTodos } from './operations';
 
 const initialState: ITodoStore = {
   allItems: [],
   activeItems: [],
   completedItems: [],
   isLoading: false,
-  error: '',
 };
 
 const todoSlice = createSlice({
   name: 'todo',
   initialState,
   reducers: {},
-  extraReducers: {},
+  extraReducers: builder =>
+    builder
+      .addCase(fetchTodos.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(fetchTodos.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.allItems = action.payload;
+      })
+      .addCase(fetchTodos.rejected, state => {
+        state.isLoading = false;
+      }),
 });
 
 export const todoReducer = todoSlice.reducer;

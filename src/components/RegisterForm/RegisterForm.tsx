@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { Formik, FormikHelpers } from 'formik';
 import { useNavigate } from 'react-router-dom';
 
-import { IRegisterUser } from '../../interface/todo.interface';
+import { IRegisterUser } from '../../interface/user.interface';
 import { registerValidation } from '../../utils/registerValidation';
+import { useAppDispatch } from '../../hooks/redux.hooks';
+import { register } from '../../redux/operations';
 
 import Button from '../Button';
 import {
@@ -29,13 +31,15 @@ export const RegisterForm = () => {
   const [inputType, setInputType] = useState<boolean>(true);
   const [inputConfirmType, setInputConfirmType] = useState<boolean>(true);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleSubmit = (values: IRegisterUser, { resetForm }: FormikHelpers<IRegisterUser>) => {
     if (!values) {
       return;
     }
-    navigate('/');
+    // navigate('/');
+    void dispatch(register(values));
 
     resetForm();
   };

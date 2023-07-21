@@ -10,11 +10,10 @@ export interface ITodo {
 }
 
 export interface ITodoStore {
-  allItems: ITodo[];
-  activeItems: ITodo[];
-  completedItems: ITodo[];
+  allItems: ITodo[] | undefined;
+  activeItems: ITodo[] | undefined;
+  completedItems: ITodo[] | undefined;
   isLoading: boolean;
-  error: string | undefined;
 }
 
 export interface IChildren {
@@ -30,11 +29,4 @@ export interface IButton {
 export interface ILoginUser {
   email: string;
   password: string;
-}
-
-export interface IRegisterUser {
-  name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
 }
