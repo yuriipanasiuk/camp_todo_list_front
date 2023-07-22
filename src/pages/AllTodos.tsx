@@ -1,15 +1,33 @@
 import { useEffect } from 'react';
-import { useAppDispatch } from '../hooks/redux.hooks';
-import { fetchTodos } from '../redux/operations';
+import { useAppDispatch, useAppSelectot } from '../hooks/redux.hooks';
+import { fetchTodos } from '../redux/todoOperations';
 
 const AllTodos = () => {
   const dispatch = useAppDispatch();
+  const todoItems = useAppSelectot(state => state.todos.allItems);
 
   useEffect(() => {
-    // void dispatch(fetchTodos());
+    void dispatch(fetchTodos());
   }, [dispatch]);
 
-  return <div>AllTodos</div>;
+  return (
+    <div>
+      {todoItems.length > 0 ? (
+        <ul>
+          {todoItems?.map(({ id, title, description }) => (
+            <li key={id}>
+              <p>{title}</p>
+              <p>{description}</p>
+              <button>View</button>
+              <button>Delete</button>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>Your todo list is empty!</p>
+      )}
+    </div>
+  );
 };
 
 export default AllTodos;

@@ -10,9 +10,9 @@ export interface ITodo {
 }
 
 export interface ITodoStore {
-  allItems: ITodo[] | undefined;
-  activeItems: ITodo[] | undefined;
-  completedItems: ITodo[] | undefined;
+  allItems: ITodo[];
+  activeItems: ITodo[];
+  completedItems: ITodo[];
   isLoading: boolean;
 }
 
@@ -24,9 +24,4 @@ export interface IButton {
   children: ReactNode;
   type?: 'submit' | 'reset' | 'button' | undefined;
   onClick?: () => void;
-}
-
-export interface ILoginUser {
-  email: string;
-  password: string;
 }

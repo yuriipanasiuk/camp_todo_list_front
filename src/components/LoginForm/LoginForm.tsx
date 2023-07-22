@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { Formik, FormikHelpers } from 'formik';
 import { useNavigate } from 'react-router-dom';
 
-import { ILoginUser } from '../../interface/todo.interface';
+import { ILoginUser } from '../../interface/user.interface';
 import Button from '../Button';
 import { loginValidation } from '../../utils/loginValidation';
+import { useAppDispatch } from '../../hooks/redux.hooks';
+import { login } from '../../redux/authOperation';
 import {
   Wraper,
   LoginTitle,
@@ -27,11 +29,15 @@ export const LoginForm = () => {
   const [inputType, setInputType] = useState<boolean>(true);
 
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
-  const handleSubmit = (values: ILoginUser, { resetForm }: FormikHelpers<ILoginUser>) => {
+  const handleSubmit = async (values: ILoginUser, { resetForm }: FormikHelpers<ILoginUser>) => {
     if (!values) {
       return;
     }
+
+    await dispatch(login(values));
+
     navigate('/');
 
     resetForm();

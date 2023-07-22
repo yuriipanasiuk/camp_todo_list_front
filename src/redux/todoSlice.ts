@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ITodoStore } from '../interface/todo.interface';
-import { fetchTodos } from './operations';
+import { fetchTodos } from './todoOperations';
 
 const initialState: ITodoStore = {
   allItems: [],
@@ -20,7 +20,7 @@ const todoSlice = createSlice({
       })
       .addCase(fetchTodos.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.allItems = action.payload;
+        state.allItems = action.payload.todos;
       })
       .addCase(fetchTodos.rejected, state => {
         state.isLoading = false;
