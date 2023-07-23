@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 export interface ITodo {
-  id: string;
+  _id: string;
   title: string;
   description: string;
   isComplete: boolean;
@@ -14,6 +14,7 @@ export interface ITodoStore {
   activeItems: ITodo[];
   completedItems: ITodo[];
   isLoading: boolean;
+  isAdding: boolean;
 }
 
 export interface IChildren {
@@ -24,4 +25,9 @@ export interface IButton {
   children: ReactNode;
   type?: 'submit' | 'reset' | 'button' | undefined;
   onClick?: () => void;
+}
+
+export interface ICreateTodo {
+  title: string;
+  description: string;
 }

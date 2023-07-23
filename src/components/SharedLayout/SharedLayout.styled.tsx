@@ -8,4 +8,5 @@ export const Layout = styled.main`
 export const Wraper = styled.div`
   display: flex;
   align-items: flex-end;
+  margin-bottom: 20px;
 `;

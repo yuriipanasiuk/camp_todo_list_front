@@ -6,6 +6,7 @@ import SearchField from '../SearchField';
 import Auth from '../Auth';
 import { Layout, Wraper } from './SharedLayout.styled';
 import Container from '../Container/Container';
+import CreateTodo from '../CreateTodo/CreateTodo';
 
 const SharedLayout = () => {
   return (
@@ -16,6 +17,7 @@ const SharedLayout = () => {
           <Filter />
           <SearchField />
         </Wraper>
+        <CreateTodo />
         <Suspense fallback={null}>
           <Outlet />
         </Suspense>
