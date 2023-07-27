@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelectot } from '../hooks/redux.hooks';
+import { useAppDispatch } from '../hooks/redux.hooks';
+import { useCustomSelector } from '../redux/selectors';
 import { fetchTodos } from '../redux/todoOperations';
 
 const AllTodos = () => {
   const dispatch = useAppDispatch();
-  const todoItems = useAppSelectot(state => state.todos.allItems);
+  const { getAllTodos } = useCustomSelector();
 
   useEffect(() => {
     void dispatch(fetchTodos());
@@ -12,9 +13,9 @@ const AllTodos = () => {
 
   return (
     <div>
-      {todoItems.length > 0 ? (
+      {getAllTodos.length > 0 ? (
         <ul>
-          {todoItems?.map(({ _id, title, description }) => (
+          {getAllTodos?.map(({ _id, title, description }) => (
             <li key={_id}>
               <p>{title}</p>
               <p>{description}</p>

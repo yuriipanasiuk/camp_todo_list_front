@@ -1,13 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 
-import { useAppSelectot, useAppDispatch } from '../../hooks/redux.hooks';
+import { useAppDispatch } from '../../hooks/redux.hooks';
+import { useCustomSelector } from '../../redux/selectors';
 import { logout } from '../../redux/authOperation';
 import Button from '../Button';
 import { AuthWraper } from './Auth.styled';
 
 const Auth = () => {
   const navigate = useNavigate();
-  const isLogedIn = useAppSelectot(state => state.auth.isLoggedIn);
+  const { getIsLoggedIn, getUser: user } = useCustomSelector();
   const dispatch = useAppDispatch();
 
   const handleLOgOut = () => {
@@ -16,8 +17,11 @@ const Auth = () => {
 
   return (
     <AuthWraper>
-      {isLogedIn ? (
-        <Button children="Log Out" onClick={handleLOgOut} />
+      {getIsLoggedIn ? (
+        <>
+          <p>{user.name}</p>
+          <Button children="Log Out" onClick={handleLOgOut} />
+        </>
       ) : (
         <>
           <Button children="Sing In" onClick={() => navigate('/signin')} />
