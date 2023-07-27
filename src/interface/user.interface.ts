@@ -31,7 +31,7 @@ export interface RefreshResponse {
   refreshToken: string;
 }
 
-export interface AuthState {
+export interface IAuthState {
   user: {
     name: string;
     email: string;
@@ -45,4 +45,17 @@ export interface AuthState {
 export interface IRouteProps {
   component: ComponentType;
   redirectTo?: string;
+}
+
+export interface IUserRegistrationPayload {
+  email: string;
+  name: string;
+  accessToken?: string;
+}
+
+export interface IUserPayload {
+  email: string;
+  name: string;
+  accessToken: string;
+  refreshToken: string;
 }

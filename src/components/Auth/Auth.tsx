@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useAppDispatch } from '../../hooks/redux.hooks';
 import { useCustomSelector } from '../../redux/selectors';
-import { logout } from '../../redux/authOperation';
+import { logout } from '../../redux/auth/authOperation';
 import Button from '../Button';
 import { AuthWraper } from './Auth.styled';
 

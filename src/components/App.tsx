@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { useCustomSelector } from '../redux/selectors';
 import { useAppDispatch } from '../hooks/redux.hooks';
-import { getCurrentUser } from '../redux/authOperation';
+import { getCurrentUser } from '../redux/auth/authOperation';
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 import SharedLayout from './SharedLayout';

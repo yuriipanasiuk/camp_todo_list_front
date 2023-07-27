@@ -11,8 +11,8 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import { todoReducer } from './todoSlice';
-import { authReducer } from './authSlice';
+import { todoReducer } from './todo/todoSlice';
+import { authReducer } from './auth/authSlice';
 
 const authPersistConfig = {
   key: 'auth',

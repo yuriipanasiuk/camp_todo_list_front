@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { instance } from '../const/instance';
-import { ICreateTodo } from '../interface/todo.interface';
+import { instance } from '../../const/instance';
+import { ICreateTodo } from '../../interface/todo.interface';
 
 export const fetchTodos = createAsyncThunk('todo/allTodo', async (_, thunkApi) => {
   try {

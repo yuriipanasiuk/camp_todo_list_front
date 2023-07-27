@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/require-await */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ILoginUser, IRegisterUser } from '../interface/user.interface';
-import { instance } from '../const/instance';
+import { ILoginUser, IRegisterUser } from '../../interface/user.interface';
+import { instance } from '../../const/instance';
 
 const setToken = (token?: string) => {
   if (token) {

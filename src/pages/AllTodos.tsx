@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAppDispatch } from '../hooks/redux.hooks';
 import { useCustomSelector } from '../redux/selectors';
-import { fetchTodos } from '../redux/todoOperations';
+import { fetchTodos } from '../redux/todo/todoOperations';
 
 const AllTodos = () => {
   const dispatch = useAppDispatch();

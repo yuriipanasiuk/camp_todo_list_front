@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { IRegisterUser } from '../../interface/user.interface';
 import { registerValidation } from '../../utils/registerValidation';
 import { useAppDispatch } from '../../hooks/redux.hooks';
-import { register } from '../../redux/authOperation';
+import { register } from '../../redux/auth/authOperation';
 
 import Button from '../Button';
 import {

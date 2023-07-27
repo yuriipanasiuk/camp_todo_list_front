@@ -6,7 +6,7 @@ import { ILoginUser } from '../../interface/user.interface';
 import Button from '../Button';
 import { loginValidation } from '../../utils/loginValidation';
 import { useAppDispatch } from '../../hooks/redux.hooks';
-import { login } from '../../redux/authOperation';
+import { login } from '../../redux/auth/authOperation';
 import {
   Wraper,
   LoginTitle,

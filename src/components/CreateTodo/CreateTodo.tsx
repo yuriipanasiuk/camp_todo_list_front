@@ -1,7 +1,7 @@
 import { Field, Form, Formik, FormikHelpers } from 'formik';
 import { useAppDispatch } from '../../hooks/redux.hooks';
 import { ICreateTodo } from '../../interface/todo.interface';
-import { addTodo } from '../../redux/todoOperations';
+import { addTodo } from '../../redux/todo/todoOperations';
 import Button from '../Button';
 
 const CreateTodo = () => {
