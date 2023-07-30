@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAppDispatch } from '../hooks/redux.hooks';
 import { useCustomSelector } from '../redux/selectors';
-import { fetchTodos } from '../redux/todo/todoOperations';
+import { deleteTodo, fetchTodos, getOneTodo } from '../redux/todo/todoOperations';
 
 const AllTodos = () => {
   const dispatch = useAppDispatch();
@@ -11,6 +11,14 @@ const AllTodos = () => {
     void dispatch(fetchTodos());
   }, [dispatch]);
 
+  const handleDelete = (id: string) => {
+    void dispatch(deleteTodo(id));
+  };
+
+  const handleView = (id: string) => {
+    void dispatch(getOneTodo(id));
+  };
+
   return (
     <div>
       {getAllTodos.length > 0 ? (
@@ -19,8 +27,12 @@ const AllTodos = () => {
             <li key={_id}>
               <p>{title}</p>
               <p>{description}</p>
-              <button>View</button>
-              <button>Delete</button>
+              <button type="button" onClick={() => handleView(_id)}>
+                View
+              </button>
+              <button type="button" onClick={() => handleDelete(_id)}>
+                Delete
+              </button>
             </li>
           ))}
         </ul>

@@ -13,6 +13,7 @@ export interface ITodoStore {
   allItems: ITodo[];
   activeItems: ITodo[];
   completedItems: ITodo[];
+  oneTodo: object;
   isLoading: boolean;
   isAdding: boolean;
 }
