@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
+import { IButtonStyleProps } from '../../interface/todo.interface';
 
-export const StyledButton = styled.button`
-  width: 100px;
+export const StyledButton = styled.button<IButtonStyleProps>`
+  width: ${p => p.width}px;
   height: 29px;
   border: 1px solid #1976d2;
   background-color: transparent;

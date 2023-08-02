@@ -1,8 +1,9 @@
-import { Field, Form, Formik, FormikHelpers } from 'formik';
+import { Formik, FormikHelpers } from 'formik';
 import { useAppDispatch } from '../../hooks/redux.hooks';
 import { ICreateTodo } from '../../interface/todo.interface';
 import { addTodo } from '../../redux/todo/todoOperations';
 import Button from '../Button';
+import { Form, TitleInput, DescriptionInput, LabelText } from './CreateTodo.styled';
 
 const CreateTodo = () => {
   const dispath = useAppDispatch();
@@ -19,9 +20,11 @@ const CreateTodo = () => {
     <>
       <Formik initialValues={{ title: '', description: '' }} onSubmit={handleAddTodo}>
         <Form>
-          <Field type="text" name="title" />
-          <Field type="text" name="description" />
-          <Button children="Add todo" type="submit" />
+          <TitleInput type="text" name="title" placeholder="Enter title" />
+
+          <DescriptionInput type="text" name="description" placeholder="Enter description" />
+
+          <Button children="Add todo" type="submit" width={250} />
         </Form>
       </Formik>
     </>

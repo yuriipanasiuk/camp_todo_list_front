@@ -9,6 +9,10 @@ export interface ITodo {
   updatedAt: string;
 }
 
+export interface ITodoProps {
+  items: ITodo[];
+}
+
 export interface ITodoStore {
   allItems: ITodo[];
   activeItems: ITodo[];
@@ -24,8 +28,13 @@ export interface IChildren {
 
 export interface IButton {
   children: ReactNode;
+  width?: number;
   type?: 'submit' | 'reset' | 'button' | undefined;
   onClick?: () => void;
+}
+
+export interface IButtonStyleProps {
+  width: number;
 }
 
 export interface ICreateTodo {
