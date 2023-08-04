@@ -28,3 +28,7 @@ export const pendingTodoReducer = (state: ITodoStore) => {
 export const rejectedTodoReducer = (state: ITodoStore) => {
   state.isLoading = false;
 };
+
+export const clearTodoSuccessReducer = (state: ITodoStore) => {
+  state.oneTodo = {};
+};

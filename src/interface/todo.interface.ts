@@ -41,3 +41,8 @@ export interface ICreateTodo {
   title: string;
   description: string;
 }
+
+export interface IModalProps {
+  children: ReactNode;
+  onClick: () => void;
+}

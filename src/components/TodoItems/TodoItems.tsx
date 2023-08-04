@@ -1,10 +1,13 @@
 import { useAppDispatch } from '../../hooks/redux.hooks';
-import { deleteTodo, getOneTodo } from '../../redux/todo/todoOperations';
+import { deleteTodo, getOneTodo, clearOneTodo } from '../../redux/todo/todoOperations';
+import Modal from '../Modal/Modal';
 import { ITodoProps } from '../../interface/todo.interface';
 import { Items } from './TodoItems.styled';
+import { useCustomSelector } from '../../redux/selectors';
 
 const TodoItem = ({ items }: ITodoProps) => {
   const dispatch = useAppDispatch();
+  const { getOneTodo: todo } = useCustomSelector();
 
   const handleDelete = (id: string) => {
     void dispatch(deleteTodo(id));
@@ -26,6 +29,11 @@ const TodoItem = ({ items }: ITodoProps) => {
           <button type="button" onClick={() => handleDelete(_id)}>
             Delete
           </button>
+          {Object.keys(todo).length > 0 && (
+            <Modal onClick={() => dispatch(clearOneTodo())}>
+              <p>Modal</p>
+            </Modal>
+          )}
         </Items>
       ))}
     </>

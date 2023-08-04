@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 
 import { instance } from '../../const/instance';
 import { ICreateTodo } from '../../interface/todo.interface';
@@ -39,3 +39,5 @@ export const deleteTodo = createAsyncThunk('todo/delete', async (data: string, t
     if (error instanceof Error) return thunkApi.rejectWithValue(error.message);
   }
 });
+
+export const clearOneTodo = createAction<void>('todo/clearOneTodo');

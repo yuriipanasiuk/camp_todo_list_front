@@ -1,7 +1,8 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { ITodoStore } from '../../interface/todo.interface';
-import { addTodo, deleteTodo, fetchTodos, getOneTodo } from './todoOperations';
+import { addTodo, deleteTodo, fetchTodos, getOneTodo, clearOneTodo } from './todoOperations';
 import {
+  clearTodoSuccessReducer,
   createTodoReducer,
   deleteTodoReducer,
   getAllTodoReducer,
@@ -19,7 +20,7 @@ const initialState: ITodoStore = {
   isAdding: false,
 };
 
-const extraActions = [addTodo, fetchTodos];
+const extraActions = [addTodo, fetchTodos, getOneTodo, deleteTodo];
 const getAction = (type: string) => isAnyOf(...extraActions.map((action: any) => action[type]));
 
 const todoSlice = createSlice({
@@ -32,6 +33,7 @@ const todoSlice = createSlice({
       .addCase(addTodo.fulfilled, createTodoReducer)
       .addCase(getOneTodo.fulfilled, getTodoByIdReducer)
       .addCase(deleteTodo.fulfilled, deleteTodoReducer)
+      .addCase(clearOneTodo, clearTodoSuccessReducer)
       .addMatcher(getAction('pending'), pendingTodoReducer)
       .addMatcher(getAction('rejected'), rejectedTodoReducer),
 });
