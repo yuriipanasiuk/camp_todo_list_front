@@ -1,14 +1,24 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { ITodoStore } from '../../interface/todo.interface';
-import { addTodo, deleteTodo, fetchTodos, getOneTodo, clearOneTodo } from './todoOperations';
+import {
+  addTodo,
+  deleteTodo,
+  fetchTodos,
+  getOneTodo,
+  clearOneTodo,
+  completeTodo,
+  searchTodo,
+} from './todoOperations';
 import {
   clearTodoSuccessReducer,
+  completeTodoReduccer,
   createTodoReducer,
   deleteTodoReducer,
   getAllTodoReducer,
   getTodoByIdReducer,
   pendingTodoReducer,
   rejectedTodoReducer,
+  searchTodoSuccessReducer,
 } from './todoReducer';
 
 const initialState: ITodoStore = {
@@ -18,9 +28,10 @@ const initialState: ITodoStore = {
   completedItems: [],
   isLoading: false,
   isAdding: false,
+  searchValue: '',
 };
 
-const extraActions = [addTodo, fetchTodos, getOneTodo, deleteTodo];
+const extraActions = [addTodo, fetchTodos, getOneTodo, deleteTodo, completeTodo];
 const getAction = (type: string) => isAnyOf(...extraActions.map((action: any) => action[type]));
 
 const todoSlice = createSlice({
@@ -32,8 +43,10 @@ const todoSlice = createSlice({
       .addCase(fetchTodos.fulfilled, getAllTodoReducer)
       .addCase(addTodo.fulfilled, createTodoReducer)
       .addCase(getOneTodo.fulfilled, getTodoByIdReducer)
+      .addCase(completeTodo.fulfilled, completeTodoReduccer)
       .addCase(deleteTodo.fulfilled, deleteTodoReducer)
       .addCase(clearOneTodo, clearTodoSuccessReducer)
+      .addCase(searchTodo, searchTodoSuccessReducer)
       .addMatcher(getAction('pending'), pendingTodoReducer)
       .addMatcher(getAction('rejected'), rejectedTodoReducer),
 });

@@ -8,7 +8,7 @@ export const Form = styled(FormikForm)`
 `;
 
 export const TitleInput = styled(Field)`
-  width: 200px;
+  width: 400px;
   margin-right: 12px;
   padding: 5px;
   border-radius: 5px;
@@ -17,7 +17,7 @@ export const TitleInput = styled(Field)`
 `;
 
 export const DescriptionInput = styled(Field)`
-  width: 400px;
+  width: 545px;
   margin-right: 12px;
   padding: 5px;
   border-radius: 5px;

@@ -29,12 +29,13 @@ export const userCurrentSuccessReducer = (
 
 export const userLogoutSuccessReducer = (state: IAuthState) => {
   state.isLoggedIn = false;
+  state.isRefreshing = false;
   state.user = { name: '', email: '' };
   state.accessToken = '';
 };
 
 export const pendingReducer = (state: IAuthState) => {
-  state.isLoggedIn = true;
+  state.isRefreshing = true;
 };
 
 export const rejectedReducer = (state: IAuthState) => {

@@ -17,6 +17,7 @@ export interface ITodoStore {
   allItems: ITodo[];
   activeItems: ITodo[];
   completedItems: ITodo[];
+  searchValue?: string;
   oneTodo: object;
   isLoading: boolean;
   isAdding: boolean;
@@ -45,4 +46,9 @@ export interface ICreateTodo {
 export interface IModalProps {
   children: ReactNode;
   onClick: () => void;
+}
+
+export interface IComplete {
+  id: string;
+  isComplete: boolean;
 }

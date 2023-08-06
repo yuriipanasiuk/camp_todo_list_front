@@ -1,15 +1,15 @@
 import styled from '@emotion/styled';
-import { Field, Form as FormikForm } from 'formik';
 import { BiSearchAlt2 } from 'react-icons/bi';
 
-export const Form = styled(FormikForm)`
+export const Form = styled.form`
   margin-left: auto;
 `;
 
-export const Input = styled(Field)`
-  width: 220px;
+export const Input = styled.input`
+  width: 277px;
+  padding-left: 8px;
   font-size: 18px;
-  color: black;
+  color: #1976d2;
   border: none;
   outline: none;
   border-bottom: 1px solid #1976d2;

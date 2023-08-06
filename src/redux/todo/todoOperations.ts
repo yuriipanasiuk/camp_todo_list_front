@@ -1,7 +1,7 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 
 import { instance } from '../../const/instance';
-import { ICreateTodo } from '../../interface/todo.interface';
+import { IComplete, ICreateTodo } from '../../interface/todo.interface';
 
 export const fetchTodos = createAsyncThunk('todo/allTodo', async (_, thunkApi) => {
   try {
@@ -31,6 +31,17 @@ export const getOneTodo = createAsyncThunk('todo/getOne', async (data: string, t
   }
 });
 
+export const completeTodo = createAsyncThunk('todo/complete', async (data: IComplete, thunkApi) => {
+  try {
+    const todo = await instance.patch(`/todo/${data.id}`, {
+      isComplete: data.isComplete,
+    });
+    return todo.data;
+  } catch (error: unknown) {
+    if (error instanceof Error) return thunkApi.rejectWithValue(error.message);
+  }
+});
+
 export const deleteTodo = createAsyncThunk('todo/delete', async (data: string, thunkApi) => {
   try {
     const todo = await instance.delete(`/todo/${data}`);
@@ -41,3 +52,5 @@ export const deleteTodo = createAsyncThunk('todo/delete', async (data: string, t
 });
 
 export const clearOneTodo = createAction<void>('todo/clearOneTodo');
+
+export const searchTodo = createAction<string>('todo/search');

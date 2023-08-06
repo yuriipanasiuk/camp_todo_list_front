@@ -1,14 +1,36 @@
+import Switch from '@mui/material/Switch';
+import Stack from '@mui/material/Stack';
 import { useAppDispatch } from '../../hooks/redux.hooks';
-import { deleteTodo, getOneTodo, clearOneTodo } from '../../redux/todo/todoOperations';
+import {
+  deleteTodo,
+  getOneTodo,
+  clearOneTodo,
+  completeTodo,
+} from '../../redux/todo/todoOperations';
 import Modal from '../Modal/Modal';
-import { ITodoProps } from '../../interface/todo.interface';
+import { ITodo, ITodoProps } from '../../interface/todo.interface';
 import { useCustomSelector } from '../../redux/selectors';
 
-import { Items, ModalWraper, Title, Icon } from './TodoItems.styled';
+import {
+  Items,
+  ModalWraper,
+  Title,
+  Icon,
+  TitleText,
+  DescriptionText,
+  DescriptionModalText,
+  TitleModalText,
+  CompleteText,
+} from './TodoItems.styled';
+import Button from '../Button/Button';
+
+const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
 const TodoItem = ({ items }: ITodoProps) => {
   const dispatch = useAppDispatch();
-  const { getOneTodo: todo } = useCustomSelector();
+  const { oneTodo, searchValue } = useCustomSelector();
+
+  const todo = oneTodo as ITodo;
 
   const handleDelete = (id: string) => {
     void dispatch(deleteTodo(id));
@@ -19,32 +41,63 @@ const TodoItem = ({ items }: ITodoProps) => {
     void dispatch(getOneTodo(id));
   };
 
+  const handleChange = (id: string, e: React.ChangeEvent<HTMLInputElement>) => {
+    const isComplete = e.target.checked;
+    void dispatch(completeTodo({ id, isComplete }));
+  };
+
+  const visibeTodos = items.filter(
+    item =>
+      item.title.toLowerCase().includes((searchValue || '').toLowerCase()) ||
+      item.description.toLowerCase().includes((searchValue || '').toLowerCase())
+  );
+
   return (
     <>
-      {items.map(({ _id, title, description }) => (
+      {visibeTodos.map(({ _id, title, description, isComplete }) => (
         <Items key={_id}>
-          <p>{title}</p>
-          <p>{description}</p>
-          <button type="button" onClick={() => handleView(_id)}>
-            View
-          </button>
-          <button type="button" onClick={() => handleDelete(_id)}>
-            Delete
-          </button>
-          {Object.keys(todo).length > 0 && (
+          <TitleText>{title}</TitleText>
+          <DescriptionText>{description}</DescriptionText>
+          <Button children="View" onClick={() => handleView(_id)} />
+          <Button children="Delete" onClick={() => handleDelete(_id)} />
+          <Switch
+            {...label}
+            checked={isComplete}
+            onChange={e => {
+              handleChange(_id, e);
+            }}
+          />
+
+          {Object.keys(oneTodo).length > 0 && (
             <Modal onClick={() => dispatch(clearOneTodo())}>
               <ModalWraper>
                 <Icon onClick={() => dispatch(clearOneTodo())} />
                 <Title>Todo modal</Title>
-                <p>
-                  <b>Title:</b> {title}
-                </p>
-                <p>
-                  <b>Description:</b> {description}
-                </p>
-                <button type="button" onClick={() => handleDelete(_id)}>
-                  Delete
-                </button>
+                <TitleModalText>
+                  <b>Title:</b> {todo.title}
+                </TitleModalText>
+                <DescriptionModalText>
+                  <b>Description:</b>
+                  {todo.description}
+                </DescriptionModalText>
+                <Stack
+                  spacing={1}
+                  direction={'row'}
+                  justifyContent={'center'}
+                  alignItems={'center'}
+                >
+                  <Button children="Delete" onClick={() => handleDelete(todo._id)} />
+                  <CompleteText>
+                    <b>Complete todo:</b>
+                  </CompleteText>
+                  <Switch
+                    {...label}
+                    checked={todo.isComplete}
+                    onChange={e => {
+                      handleChange(todo._id, e);
+                    }}
+                  />
+                </Stack>
               </ModalWraper>
             </Modal>
           )}

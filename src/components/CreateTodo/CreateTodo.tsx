@@ -3,13 +3,13 @@ import { useAppDispatch } from '../../hooks/redux.hooks';
 import { ICreateTodo } from '../../interface/todo.interface';
 import { addTodo } from '../../redux/todo/todoOperations';
 import Button from '../Button';
-import { Form, TitleInput, DescriptionInput, LabelText } from './CreateTodo.styled';
+import { Form, TitleInput, DescriptionInput } from './CreateTodo.styled';
 
 const CreateTodo = () => {
   const dispath = useAppDispatch();
 
   const handleAddTodo = (values: ICreateTodo, { resetForm }: FormikHelpers<ICreateTodo>) => {
-    if (!values) return;
+    if (!values.title || !values.description) return;
 
     void dispath(addTodo(values));
 
@@ -24,7 +24,7 @@ const CreateTodo = () => {
 
           <DescriptionInput type="text" name="description" placeholder="Enter description" />
 
-          <Button children="Add todo" type="submit" width={250} />
+          <Button children="Add todo" type="submit" width={277} />
         </Form>
       </Formik>
     </>

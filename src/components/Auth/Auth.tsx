@@ -4,7 +4,7 @@ import { useAppDispatch } from '../../hooks/redux.hooks';
 import { useCustomSelector } from '../../redux/selectors';
 import { logout } from '../../redux/auth/authOperation';
 import Button from '../Button';
-import { AuthWraper } from './Auth.styled';
+import { AuthWraper, UserName } from './Auth.styled';
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -19,7 +19,9 @@ const Auth = () => {
     <AuthWraper>
       {getIsLoggedIn ? (
         <>
-          <p>{user.name}</p>
+          <UserName>
+            <b>Welcome:</b> {user.name}
+          </UserName>
           <Button children="Log Out" onClick={handleLOgOut} />
         </>
       ) : (

@@ -8,6 +8,7 @@ export const useCustomSelector = () => {
     getIsRegiser: useAppSelector(state => state.auth.isRegister),
     getToken: useAppSelector(state => state.auth.accessToken),
     getAllTodos: useAppSelector(state => state.todos.allItems),
-    getOneTodo: useAppSelector(state => state.todos.oneTodo),
+    oneTodo: useAppSelector(state => state.todos.oneTodo),
+    searchValue: useAppSelector(state => state.todos.searchValue),
   };
 };
