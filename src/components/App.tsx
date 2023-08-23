@@ -34,14 +34,14 @@ function App() {
               path="all"
               element={<PrivateRoute component={AllTodos} redirectTo="/signin" />}
             />
-            <Route
+            {/* <Route
               path="active"
               element={<PrivateRoute component={ActiveTodos} redirectTo="/signin" />}
-            />
-            <Route
+            /> */}
+            {/* <Route
               path="completed"
               element={<PrivateRoute component={CompleteTodos} redirectTo="/signin" />}
-            />
+            /> */}
           </Route>
           <Route
             path="/signin"

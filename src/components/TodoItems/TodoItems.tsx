@@ -1,5 +1,6 @@
 import Switch from '@mui/material/Switch';
 import Stack from '@mui/material/Stack';
+
 import { useAppDispatch } from '../../hooks/redux.hooks';
 import {
   deleteTodo,
@@ -8,6 +9,7 @@ import {
   completeTodo,
 } from '../../redux/todo/todoOperations';
 import Modal from '../Modal/Modal';
+import Button from '../Button/Button';
 import { ITodo, ITodoProps } from '../../interface/todo.interface';
 import { useCustomSelector } from '../../redux/selectors';
 
@@ -22,7 +24,6 @@ import {
   TitleModalText,
   CompleteText,
 } from './TodoItems.styled';
-import Button from '../Button/Button';
 
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
 

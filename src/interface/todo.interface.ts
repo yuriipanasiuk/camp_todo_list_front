@@ -52,3 +52,7 @@ export interface IComplete {
   id: string;
   isComplete: boolean;
 }
+
+export interface IStyleFilterProp {
+  active: boolean;
+}

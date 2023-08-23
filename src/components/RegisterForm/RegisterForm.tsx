@@ -31,17 +31,17 @@ export const RegisterForm = () => {
   const [inputType, setInputType] = useState<boolean>(true);
   const [inputConfirmType, setInputConfirmType] = useState<boolean>(true);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const handleSubmit = (values: IRegisterUser, { resetForm }: FormikHelpers<IRegisterUser>) => {
     if (!values) {
       return;
     }
-    // navigate('/');
     void dispatch(register(values));
 
     resetForm();
+    navigate('/');
   };
 
   const onShowPassword = () => {
