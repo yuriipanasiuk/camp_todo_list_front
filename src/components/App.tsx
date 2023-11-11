@@ -11,8 +11,6 @@ import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 
 const AllTodos = lazy(() => import('../pages/AllTodos'));
-const ActiveTodos = lazy(() => import('../pages/ActiveTodos'));
-const CompleteTodos = lazy(() => import('../pages/CompleteTodos'));
 
 function App() {
   const { getToken: token, getIsRefreshing: isRefreshing } = useCustomSelector();
@@ -34,14 +32,6 @@ function App() {
               path="all"
               element={<PrivateRoute component={AllTodos} redirectTo="/signin" />}
             />
-            {/* <Route
-              path="active"
-              element={<PrivateRoute component={ActiveTodos} redirectTo="/signin" />}
-            /> */}
-            {/* <Route
-              path="completed"
-              element={<PrivateRoute component={CompleteTodos} redirectTo="/signin" />}
-            /> */}
           </Route>
           <Route
             path="/signin"

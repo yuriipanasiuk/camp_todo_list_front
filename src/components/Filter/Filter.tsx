@@ -17,8 +17,7 @@ const Filter = () => {
   };
 
   const handleAllClick = () => handleClick(ButtonType.All);
-  const handlePrivateClick = () => handleClick(ButtonType.Private);
-  const handlePublicClick = () => handleClick(ButtonType.Public);
+  const handleActiveClick = () => handleClick(ButtonType.Active);
   const handleCompletedClick = () => handleClick(ButtonType.Completed);
 
   return (
@@ -26,12 +25,8 @@ const Filter = () => {
       <StyledLink type="button" active={activeButton === 'all'} onClick={handleAllClick}>
         All
       </StyledLink>
-      <StyledLink type="button" active={activeButton === 'isPrivate'} onClick={handlePrivateClick}>
-        Private
-      </StyledLink>
-
-      <StyledLink type="button" active={activeButton === 'public'} onClick={handlePublicClick}>
-        Public
+      <StyledLink type="button" active={activeButton === 'active'} onClick={handleActiveClick}>
+        Active
       </StyledLink>
       <StyledLink type="button" active={activeButton === 'complete'} onClick={handleCompletedClick}>
         Completed

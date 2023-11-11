@@ -20,7 +20,6 @@ export const authSlice = createSlice({
     accessToken: '',
     isLoggedIn: false,
     isRefreshing: false,
-    isRegister: false,
   },
   reducers: {},
   extraReducers: builder =>

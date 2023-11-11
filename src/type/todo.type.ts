@@ -1,6 +1,5 @@
 export enum ButtonType {
   All = 'all',
-  Private = 'isPrivate',
-  Public = 'public',
+  Active = 'active',
   Completed = 'complete',
 }

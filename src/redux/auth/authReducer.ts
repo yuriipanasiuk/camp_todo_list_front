@@ -23,6 +23,7 @@ export const userCurrentSuccessReducer = (
 ) => {
   state.isRefreshing = false;
   state.isLoggedIn = true;
+
   state.user.name = action.payload.name;
   state.user.email = action.payload.email;
 };
@@ -41,5 +42,4 @@ export const pendingReducer = (state: IAuthState) => {
 export const rejectedReducer = (state: IAuthState) => {
   state.isLoggedIn = false;
   state.isRefreshing = false;
-  state.isRegister = false;
 };

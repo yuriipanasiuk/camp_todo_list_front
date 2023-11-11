@@ -37,9 +37,8 @@ export interface IAuthState {
     email: string;
   };
   accessToken: string;
-  isLoggedIn: boolean;
+  isLoggedIn?: boolean;
   isRefreshing: boolean;
-  isRegister: boolean;
 }
 
 export interface IRouteProps {

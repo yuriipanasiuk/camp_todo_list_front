@@ -3,9 +3,9 @@ import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { instance } from '../../const/instance';
 import { IComplete, ICreateTodo } from '../../interface/todo.interface';
 
-export const fetchTodos = createAsyncThunk('todo/allTodo', async (_, thunkApi) => {
+export const fetchTodos = createAsyncThunk('todo/allTodo', async (query: string, thunkApi) => {
   try {
-    const res = await instance.get('/todo');
+    const res = await instance.get(`/todo?type=${query}`);
     return res.data;
   } catch (error: unknown) {
     if (error instanceof Error) return thunkApi.rejectWithValue(error.message);

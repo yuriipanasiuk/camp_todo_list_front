@@ -11,11 +11,10 @@ const AllTodos = () => {
   const { getAllTodos } = useCustomSelector();
 
   const searchTypeQuery = searchParams.get('type');
-  console.log(searchTypeQuery);
 
   useEffect(() => {
-    void dispatch(fetchTodos());
-  }, [dispatch]);
+    void dispatch(fetchTodos(searchTypeQuery || ''));
+  }, [dispatch, searchTypeQuery]);
 
   return (
     <>

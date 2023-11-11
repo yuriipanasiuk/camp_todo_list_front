@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-/* eslint-disable @typescript-eslint/require-await */
-/* eslint-disable @typescript-eslint/no-floating-promises */
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ILoginUser, IRegisterUser } from '../../interface/user.interface';
 import { instance } from '../../const/instance';
@@ -15,7 +12,8 @@ const setToken = (token?: string) => {
 instance.interceptors.request.use(
   config => {
     const accessToken = localStorage.getItem('accessToken');
-    if (accessToken) {
+
+    if (!config.headers.Authorization) {
       config.headers.Authorization = `Bearer ${accessToken}`;
       return config;
     }
@@ -27,27 +25,22 @@ instance.interceptors.request.use(
 );
 
 instance.interceptors.response.use(
-  response => response,
-  async error => {
-    const originalRequest = error.config;
-    if (error.response.status === 401 && localStorage.getItem('refreshToken')) {
+  res => res,
+  async err => {
+    const originalConfig = err.config;
+    if (err.response.status === 401 && !originalConfig.sent) {
       const refreshToken = localStorage.getItem('refreshToken');
-
-      instance.post('/user/refresh', { refreshToken }).then(response => {
-        localStorage.setItem('accessToken', response.data.accessToken);
-        localStorage.setItem('refreshToken', response.data.refreshToken);
-        originalRequest.headers.Authorization = `Bearer ${response.data.accessToken}`;
-        instance(originalRequest)
-          .then(response => {
-            return response.data;
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      });
-    } else {
-      return Promise.reject(error.response.data);
+      try {
+        const { data } = await instance.post('/user/refresh', { refreshToken });
+        originalConfig.headers.Authorization = `Bearer ${data.accessToken}`;
+        localStorage.setItem('refreshToken', data.refreshToken);
+        localStorage.setItem('accessToken', data.accessToken);
+        return instance(originalConfig);
+      } catch (error) {
+        return Promise.reject(error);
+      }
     }
+    return Promise.reject(err);
   }
 );
 

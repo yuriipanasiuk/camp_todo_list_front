@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Switch from '@mui/material/Switch';
 import Stack from '@mui/material/Stack';
 
@@ -30,6 +31,7 @@ const label = { inputProps: { 'aria-label': 'Switch demo' } };
 const TodoItem = ({ items }: ITodoProps) => {
   const dispatch = useAppDispatch();
   const { oneTodo, searchValue } = useCustomSelector();
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const todo = oneTodo as ITodo;
 
@@ -40,6 +42,11 @@ const TodoItem = ({ items }: ITodoProps) => {
 
   const handleView = (id: string) => {
     void dispatch(getOneTodo(id));
+    setIsModalOpen(prevState => !prevState);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(prevState => !prevState);
   };
 
   const handleChange = (id: string, e: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,10 +76,10 @@ const TodoItem = ({ items }: ITodoProps) => {
             }}
           />
 
-          {Object.keys(oneTodo).length > 0 && (
-            <Modal onClick={() => dispatch(clearOneTodo())}>
+          {isModalOpen && (
+            <Modal onClick={handleCloseModal}>
               <ModalWraper>
-                <Icon onClick={() => dispatch(clearOneTodo())} />
+                <Icon onClick={handleCloseModal} />
                 <Title>Todo modal</Title>
                 <TitleModalText>
                   <b>Title:</b> {todo.title}
@@ -93,7 +100,7 @@ const TodoItem = ({ items }: ITodoProps) => {
                   </CompleteText>
                   <Switch
                     {...label}
-                    checked={todo.isComplete}
+                    checked={Boolean(todo.isComplete)}
                     onChange={e => {
                       handleChange(todo._id, e);
                     }}
