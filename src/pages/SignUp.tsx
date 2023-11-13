@@ -1,5 +1,5 @@
 import FormWraper from '../components/FormWraper/FormWraper';
-import { RegisterForm } from '../components/RegisterForm/RegisterForm';
+import RegisterForm from '../components/RegisterForm/RegisterForm';
 
 const SignUp = () => {
   return (

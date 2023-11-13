@@ -24,7 +24,7 @@ import {
   NavLink,
 } from './LoginForm.styled';
 
-export const LoginForm = () => {
+const LoginForm = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [inputType, setInputType] = useState<boolean>(true);
 
@@ -87,3 +87,5 @@ export const LoginForm = () => {
     </Wraper>
   );
 };
+
+export default LoginForm;

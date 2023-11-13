@@ -7,7 +7,6 @@ export const userRegistrationSuccessReducer = (
 ) => {
   state.user.email = action.payload.email;
   state.user.name = action.payload.name;
-  state.isRegister = true;
 };
 
 export const userLoginSuccessReducer = (state: IAuthState, action: PayloadAction<IUserPayload>) => {

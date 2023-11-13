@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { AnyAction, Reducer, configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
@@ -9,6 +9,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import { PersistPartial } from 'redux-persist/es/persistReducer';
 import storage from 'redux-persist/lib/storage';
 
 import { todoReducer } from './todo/todoSlice';
@@ -20,10 +21,20 @@ const authPersistConfig = {
   whitelist: ['accessToken'],
 };
 
+const persistedAuthReducer = persistReducer(authPersistConfig, authReducer) as Reducer<
+  {
+    user: { name: string; email: string };
+    accessToken: string;
+    isLoggedIn: boolean;
+    isRefreshing: boolean;
+  } & PersistPartial,
+  AnyAction
+>;
+
 export const store = configureStore({
   reducer: {
     todos: todoReducer,
-    auth: persistReducer(authPersistConfig, authReducer),
+    auth: persistedAuthReducer,
   },
   middleware(getDefaultMiddleware) {
     return getDefaultMiddleware({

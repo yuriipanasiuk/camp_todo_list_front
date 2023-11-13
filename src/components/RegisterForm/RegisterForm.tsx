@@ -25,7 +25,7 @@ import {
   NavLink,
 } from './RegisterForm.styled';
 
-export const RegisterForm = () => {
+const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
   const [inputType, setInputType] = useState<boolean>(true);
@@ -112,3 +112,5 @@ export const RegisterForm = () => {
     </Wraper>
   );
 };
+
+export default RegisterForm;
