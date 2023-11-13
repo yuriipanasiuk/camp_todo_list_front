@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1699874448421" clover="3.2.0">
+  <project timestamp="1699874448421" name="All files">
+    <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2" elements="8" coveredelements="8" complexity="0" loc="4" ncloc="4" packages="1" files="3" classes="3"/>
+    <file name="Button.styled.tsx" path="/Users/yura/Documents/project/todo_list_front/src/components/Button/Button.styled.tsx">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="5" count="3" type="stmt"/>
+    </file>
+    <file name="Button.tsx" path="/Users/yura/Documents/project/todo_list_front/src/components/Button/Button.tsx">
+      <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <line num="4" count="1" type="cond" truecount="2" falsecount="0"/>
+      <line num="5" count="3" type="stmt"/>
+    </file>
+    <file name="index.ts" path="/Users/yura/Documents/project/todo_list_front/src/components/Button/index.ts">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+    </file>
+  </project>
+</coverage>

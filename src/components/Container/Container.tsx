@@ -1,7 +1,7 @@
 import { IChildren } from '../../interface/todo.interface';
 import { StyledContainer } from './Container.styled';
 
-const Container: React.FC<IChildren> = ({ children }) => {
+const Container = ({ children }: IChildren) => {
   return <StyledContainer>{children}</StyledContainer>;
 };
 

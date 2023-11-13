@@ -16,7 +16,7 @@ module.exports = {
     project: true,
     tsconfigRootDir: __dirname,
   },
-  plugins: ['react-refresh'],
+  plugins: ['react-refresh', 'jest'],
   rules: {
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     '@typescript-eslint/no-non-null-assertion': 'off',
@@ -27,5 +27,11 @@ module.exports = {
     '@typescript-eslint/restrict-template-expressions': 'off',
     '@typescript-eslint/require-await': 'off',
     '@typescript-eslint/no-floating-promises': 'off',
+    '@typescript-eslint/no-unsafe-call': 'off',
+    // 'jest/no-disabled-tests': 'warn',
+    // 'jest/no-focused-tests': 'error',
+    // 'jest/no-identical-title': 'error',
+    // 'jest/prefer-to-have-length': 'warn',
+    // 'jest/valid-expect': 'error',
   },
 };

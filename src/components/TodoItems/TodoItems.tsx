@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import Switch from '@mui/material/Switch';
-import Stack from '@mui/material/Stack';
+import { Switch, Stack } from '@mui/material';
 
 import { useAppDispatch } from '../../hooks/redux.hooks';
+import { useCustomSelector } from '../../redux/selectors';
 import {
   deleteTodo,
   getOneTodo,
@@ -10,9 +10,8 @@ import {
   completeTodo,
 } from '../../redux/todo/todoOperations';
 import Modal from '../Modal/Modal';
-import Button from '../Button/Button';
+import Button from '../Button';
 import { ITodo, ITodoProps } from '../../interface/todo.interface';
-import { useCustomSelector } from '../../redux/selectors';
 
 import {
   Items,
@@ -38,6 +37,7 @@ const TodoItem = ({ items }: ITodoProps) => {
   const handleDelete = (id: string) => {
     void dispatch(deleteTodo(id));
     dispatch(clearOneTodo());
+    setIsModalOpen(false);
   };
 
   const handleView = (id: string) => {

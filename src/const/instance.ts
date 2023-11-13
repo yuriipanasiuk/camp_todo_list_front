@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import axios from 'axios';
 
 export const instance = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: 'https://todo-list-wheat-nine.vercel.app/api',
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',

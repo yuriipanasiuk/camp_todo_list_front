@@ -11,7 +11,7 @@ const Auth = () => {
   const { getIsLoggedIn, getUser: user } = useCustomSelector();
   const dispatch = useAppDispatch();
 
-  const handleLOgOut = () => {
+  const handleLogOut = () => {
     void dispatch(logout());
   };
 
@@ -22,7 +22,7 @@ const Auth = () => {
           <UserName>
             <b>Welcome:</b> {user.name}
           </UserName>
-          <Button children="Log Out" onClick={handleLOgOut} />
+          <Button children="Log Out" onClick={handleLogOut} />
         </>
       ) : (
         <>
